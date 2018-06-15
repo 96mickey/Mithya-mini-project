@@ -1,0 +1,17 @@
+<% include ../partials/header %>
+<h1> To add a new hotel just type the name and submit the form</h1>
+<form action="/api/hotel" method="POST">
+    <input class="form-control" type="text" name="name" placeholder="name">
+    <button >Submit</button>
+</form>
+
+<% if(!currentUser){ %>
+  <h2> you need to login in order to view the list of hotels.</h2>
+<% } else { %>  
+<ul class="list">
+  </ul>
+<% } %>
+
+<script type="text/javascript" src="app.js"></script>
+
+<% include ../partials/footer %>

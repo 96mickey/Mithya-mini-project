@@ -1,0 +1,8 @@
+.flex{
+    display: flex;
+    min-width: 500px;
+    justify-content: space-around;
+}
+.items{
+    flex-basis: 30%;
+}

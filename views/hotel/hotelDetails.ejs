@@ -1,0 +1,32 @@
+<% include ../partials/header %>
+    <h1><%= hotel.name %></h1>
+    <a href="/hotel/add/<%= hotel._id %>"><button>add room</button></a>
+    
+    <a href="/hotel/confirm/<%= hotel._id %>"><button>complete process</button></a>
+    
+    <h3>Information about customers</h3>
+    <div class="flex">
+    <div class="item">
+        People visited:<br>
+        <% for (i = 0; i < hotel.visitors.length; i++) { %>
+            <p><%= hotel.visitors[i].username %></p>
+        <% } %>
+    </div>
+    <div class="item">
+        People under draft category:<br>
+        <% for (i = 0; i < hotel.draft.length; i++) { %>
+            <p><%= hotel.draft[i].username %></p>
+        <% } %>
+    </div>
+    <div class="item">
+        People visited:<br>
+        <% for (i = 0; i < hotel.done.length; i++) { %>
+            <p><%= hotel.done[i].username %></p>
+        <% } %>
+    </div>
+    
+    </div>
+    
+    
+    
+<% include ../partials/footer %>
