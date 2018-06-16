@@ -29,10 +29,43 @@ exports.getHotelDetails = function(req, res){
         } else{
             foundHotel.visitors.push(req.user._id);
             foundHotel.save();
-            console.log(foundHotel)
-            res.render("hotel/hotelDetails", {hotel: foundHotel});
+            db.find({}, function(err, allHotels){
+                if(err){
+                    res.redirect('/')
+                }else{
+                    var name = maxVisitors(allHotels);
+                    var desired = maxBooked(allHotels);
+                    res.render("hotel/hotelDetails", {hotel: foundHotel, maxhotelvisitors: name, desired: desired});
+                }
+            })
         }
     })
+}
+
+function maxVisitors(arr){
+    var maxVisited = arr[0].visitors,
+        nameHigh = arr[0].name;
+        
+    for(let i=0; i <arr.length; i++){
+        if(arr[i].visitors.length > maxVisited.length){
+            maxVisited = arr[i].visitors;
+            nameHigh = arr[i].name
+        }
+    }
+    return nameHigh;
+}
+
+function maxBooked(arr){
+    var maxDesired = arr[0].done,
+        nameHigh = arr[0].name;
+        
+    for(let i=0; i <arr.length; i++){
+        if(arr[i].done.length > maxDesired.length){
+            maxDesired = arr[i].visitors;
+            nameHigh = arr[i].name
+        }
+    }
+    return nameHigh;
 }
 
 exports.draftHotel = function(req, res){

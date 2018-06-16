@@ -4,6 +4,13 @@
     
     <a href="/hotel/confirm/<%= hotel._id %>"><button>complete process</button></a>
     
+    
+    <div>
+        <h1>Recommendations</h1>
+        <p>Max hotel visitors on our website <b><%= maxhotelvisitors %></b></p>
+        <p>Most desired hotel on our website <b><%= desired %></b></p>
+    </div>
+    
     <h3>Information about customers</h3>
     <div class="flex">
     <div class="item">
@@ -11,6 +18,7 @@
         <% for (i = 0; i < hotel.visitors.length; i++) { %>
             <p><%= hotel.visitors[i].username %></p>
         <% } %>
+        <p> <%= currentUser.username %> </p>
     </div>
     <div class="item">
         People under draft category:<br>
@@ -26,6 +34,8 @@
     </div>
     
     </div>
+    
+    
     
     
     
